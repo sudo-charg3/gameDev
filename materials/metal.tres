@@ -1,0 +1,23 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://m5gv1yfiuqcq"]
+
+[ext_resource type="Texture2D" uid="uid://dufe5mjo1443k" path="res://assets/textures/rusty_metal_grid_diff_4k.jpg" id="1_o6q1k"]
+[ext_resource type="Texture2D" uid="uid://cttlkukfxv5hb" path="res://assets/textures/rusty_metal_grid_disp_4k.png" id="2_dengn"]
+[ext_resource type="Texture2D" uid="uid://c6t7epngmxkou" path="res://assets/rusty_metal_grid_nor_gl_4k.png" id="3_8p2fm"]
+[ext_resource type="Texture2D" uid="uid://c3wgvlbtnhado" path="res://assets/rusty_metal_grid_rough_4k.png" id="4_s8uns"]
+
+[resource]
+albedo_texture = ExtResource("1_o6q1k")
+metallic = 0.75
+metallic_specular = 1.0
+roughness_texture = ExtResource("4_s8uns")
+normal_enabled = true
+normal_scale = -0.23
+normal_texture = ExtResource("3_8p2fm")
+heightmap_enabled = true
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("2_dengn")
+heightmap_flip_texture = true
+uv1_scale = Vector3(2, 2, 1)
+uv1_offset = Vector3(0, -0.085, 0)

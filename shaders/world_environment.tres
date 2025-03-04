@@ -1,0 +1,31 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://b41bqfliybeoj"]
+
+[ext_resource type="Texture2D" uid="uid://bmhxutgv025o0" path="res://assets/clouds_anime_6k.jpg" id="1_somwe"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fw0p6"]
+panorama = ExtResource("1_somwe")
+
+[sub_resource type="Sky" id="Sky_7ea53"]
+sky_material = SubResource("PanoramaSkyMaterial_fw0p6")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_7ea53")
+tonemap_mode = 3
+tonemap_exposure = 0.7
+ssao_radius = 4.57
+ssao_intensity = 10.65
+ssao_power = 20.8932
+glow_enabled = true
+glow_intensity = 0.2
+glow_strength = 0.7
+glow_bloom = 0.1
+glow_blend_mode = 1
+fog_light_energy = 0.39
+fog_density = 0.0095
+volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(1, 1, 0, 1)
+volumetric_fog_emission = Color(0.241156, 0.241156, 0.241156, 1)
+adjustment_enabled = true
+adjustment_contrast = 0.9
+adjustment_saturation = 0.9
