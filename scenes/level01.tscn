@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://4unj3vsk8btb"]
+
+[ext_resource type="PackedScene" uid="uid://b7muu400muhmj" path="res://gameviihaan.blend" id="1_8es24"]
+[ext_resource type="PackedScene" uid="uid://c33qu8e4ujoos" path="res://scenes/player.tscn" id="1_miv2v"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iujf4"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_miv2v"]
+sky_material = SubResource("ProceduralSkyMaterial_iujf4")
+
+[sub_resource type="Environment" id="Environment_8es24"]
+background_mode = 2
+sky = SubResource("Sky_miv2v")
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[node name="Level01" type="Node3D"]
+
+[node name="env" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
+environment = SubResource("Environment_8es24")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
+transform = Transform3D(-0.866025, -0.398265, 0.3023, 0, 0.604599, 0.79653, -0.5, 0.689815, -0.523598, 0, 0, 0)
+shadow_enabled = true
+
+[node name="stage" type="Node3D" parent="."]
+
+[node name="gameviihaan" parent="stage" instance=ExtResource("1_8es24")]
+
+[node name="player" parent="." instance=ExtResource("1_miv2v")]
