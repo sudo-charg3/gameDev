@@ -372,6 +372,6 @@ cast_shadow = 0
 shape = SubResource("ConcavePolygonShape3D_u8wfu")
 
 [node name="player" parent="." instance=ExtResource("1_miv2v")]
-transform = Transform3D(-0.8, 0, 1.20797e-07, 0, 0.8, 0, -1.20797e-07, 0, -0.8, 4, 0, 6.03985e-07)
+transform = Transform3D(-0.8, 0, 1.20797e-07, 0, 0.8, 0, -1.20797e-07, 0, -0.8, -34.8198, 8.28983, 0.539231)
 
 [editable path="stage/gameviihaan"]
