@@ -47,6 +47,11 @@ var headBobCurrentIntensity = 0.05
 var headBobbingVector = Vector2.ZERO
 var headBobbingIndex = 0.0
 
+#Stair Movement
+const MAX_STEP_HEIGHT = 0.5
+var _snapped_to_stairs_last_frame := false
+var _last_frame_was_on_floor = -INF
+
 #Input variables
 @export var mouseSens = 0.4
 var direction = Vector3.ZERO
@@ -80,6 +85,15 @@ func _input(event: InputEvent) -> void:
 			head.rotate_x(deg_to_rad(-event.relative.y*mouseSens))
 			head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 		
+func is_surface_too_steep(normal: Vector3) -> bool:
+	return normal.angle_to(Vector3.UP) > self.floor_max_angle
+	
+func run_body_test_motion(from : Transform3D, motion: Vector3, result=null) -> bool:
+		if not result: result = PhysicsTestMotionResult3D.new()
+		var params = PhysicsTestMotionParameters3D.new()
+		params.from = from
+		params.motion = motion
+		return PhysicsServer3D.body_test_motion(self.get_rid(), params, result)
 func _physics_process(delta: float) -> void:
 	#Get input
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")

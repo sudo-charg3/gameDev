@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://c33qu8e4ujoos"]
+[gd_scene load_steps=13 format=3 uid="uid://c33qu8e4ujoos"]
 
 [ext_resource type="Script" uid="uid://djc4qnfhq5ly2" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Environment" uid="uid://brncpb5x53i6a" path="res://scenes/env/environment.tres" id="2_g2els"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_okcj4"]
 
@@ -14,159 +15,6 @@ blend_mode = 4
 diffuse_mode = 3
 specular_mode = 1
 albedo_color = Color(1, 0.458824, 0.0666667, 1)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rwgxs"]
-load_path = "res://.godot/imported/M3_Comic_equirectangular-jpg_night_sky_vast_minimal_1976843797_13133834.jpg-bbc3873543323bf6c28cf1ae6030b44a.s3tc.ctex"
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tppwv"]
-panorama = SubResource("CompressedTexture2D_rwgxs")
-
-[sub_resource type="Sky" id="Sky_iitfp"]
-sky_material = SubResource("PanoramaSkyMaterial_tppwv")
-
-[sub_resource type="Environment" id="Environment_k0juu"]
-background_mode = 2
-sky = SubResource("Sky_iitfp")
-ssr_enabled = true
-ssao_enabled = true
-ssil_enabled = true
-sdfgi_enabled = true
-glow_enabled = true
-glow_intensity = 0.2
-glow_strength = 0.7
-glow_bloom = 0.1
-glow_blend_mode = 1
-fog_light_energy = 0.39
-fog_density = 0.0095
-volumetric_fog_density = 0.01
-volumetric_fog_albedo = Color(1, 1, 0, 1)
-volumetric_fog_emission = Color(0.241156, 0.241156, 0.241156, 1)
-adjustment_brightness = 0.88
-adjustment_saturation = 0.9
-
-[sub_resource type="Shader" id="Shader_nygwi"]
-code = "shader_type spatial;
-render_mode unshaded;
-
-// Parameters
-uniform float zNear = 0.05; 
-uniform float zFar = 100.0;  
-uniform float outlineThickness = 1.5; 
-uniform vec3 outlineColor : source_color = vec3(0.0);
-uniform float wiggleFrequency = 0.08; 
-uniform float wiggleAmplitude = 2.0;
-
-uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_linear_mipmap;
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
-uniform sampler2D NORMAL_TEXTURE : hint_normal_roughness_texture, filter_nearest;
-
-// Sobel Filter x
-const mat3 Sy = mat3(
-    vec3(1.0, 0.0, -1.0),
-    vec3(2.0, 0.0, -2.0),
-    vec3(1.0, 0.0, -1.0)
-);
-
-// Sobel Filter y
-const mat3 Sx = mat3(
-    vec3(1.0, 2.0, 1.0),
-    vec3(0.0, 0.0, 0.0),
-    vec3(-1.0, -2.0, -1.0)
-);
-
-void vertex() {
-    POSITION = vec4(VERTEX.xy, 1.0, 1.0);
-}
-
-// Retrieve and scale depth from the depth buffer
-float depth(sampler2D depth_texture, vec2 screen_uv, mat4 inv_projection_matrix){
-    float raw_depth = texture(depth_texture, screen_uv).r;
-    vec3 ndc = vec3(screen_uv * 2.0 - 1.0, raw_depth);
-    vec4 view_space = inv_projection_matrix * vec4(ndc, 1.0);    
-    view_space.xyz /= view_space.w;
-    float linear_depth = -view_space.z;
-    return clamp((linear_depth - zNear) / (zFar - zNear), 0.0, 1.0);  // Ensure depth is clamped between 0 and 1
-}
-
-// Compute edges detection from depth using x,y sobel filters
-float sobel_depth(in vec2 uv, in vec2 offset, mat4 inv_projection_matrix) {
-    // ... (keep the sobel_depth function as it is)
-}
-
-float luminance(vec3 color) {
-    const vec3 magic = vec3(0.2125, 0.7154, 0.0721);
-    return dot(magic, color);
-}
-
-// Compute edges detection from normals using x,y sobel filters
-float sobel_normal(in vec2 uv, in vec2 offset) {
-    // ... (keep the sobel_normal function as it is)
-}
-
-// Just don't ask
-float hash(vec2 p){
-    // ... (keep the hash function as it is)
-}
-
-void fragment() {  
-    vec2 offset = outlineThickness / VIEWPORT_SIZE;
-    vec2 uv = SCREEN_UV;
-
-    // Displacement to add a little bit of hand-drawn wiggly effect
-    vec2 displ = vec2((hash(FRAGCOORD.xy) * sin(FRAGCOORD.y * wiggleFrequency)),
-    (hash(FRAGCOORD.xy) * cos(FRAGCOORD.x * wiggleFrequency))) * wiggleAmplitude / VIEWPORT_SIZE;
-    
-    // Access the depth buffer
-    float depth_value = depth(DEPTH_TEXTURE, uv, INV_PROJECTION_MATRIX);
-
-    // Avoid depth cross-hatching (sky and background)
-    if (depth_value > 0.99 || depth_value < 0.01) {  // Prevent blacking out at extreme depths
-        discard;
-    }
-    
-    vec3 pixelColor = texture(SCREEN_TEXTURE, uv).rgb; 
-    float pixelLuma = luminance(pixelColor);
-    float modVal = 11.0;
-    
-    // Apply hatching based on luminance value (from darker to lighter zones)
-    // Dark Zones
-    if (pixelLuma <= 0.35) {
-        if (mod((uv.y + displ.y) * VIEWPORT_SIZE.y, modVal) < outlineThickness) {
-            pixelColor = mix(pixelColor, outlineColor, 0.5);
-        }
-    }
-    // Grey Dark
-    if (pixelLuma <= 0.45) {
-        if (mod((uv.x + displ.x) * VIEWPORT_SIZE.x, modVal) < outlineThickness) {
-            pixelColor = mix(pixelColor, outlineColor, 0.25);
-        }
-    }
-    // Light Dark
-    if (pixelLuma <= 0.80) {
-        if (mod((uv.x + displ.x) * VIEWPORT_SIZE.y + (uv.y + displ.y) * VIEWPORT_SIZE.x, modVal) <= outlineThickness) {
-            pixelColor = mix(pixelColor, outlineColor, 0.15);
-        }
-    }
-    
-    // Edge detection using depth buffer
-    float edgeDepth = sobel_depth(uv + displ, offset, INV_PROJECTION_MATRIX);
-    // Edge detection normal buffer
-    float edgeNormal = sobel_normal(uv + displ, offset);
-    // Mix both edge detection
-    float outline = smoothstep(0.0, 1.0, 25.0 * edgeDepth + edgeNormal);
-    
-    // Mix color and edges, avoid excessive darkening
-    ALBEDO = mix(pixelColor, outlineColor, clamp(outline * 0.3, 0.0, 1.0));  // Reduce the outline intensity
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_njjts"]
-render_priority = 0
-shader = SubResource("Shader_nygwi")
-
-[sub_resource type="QuadMesh" id="QuadMesh_1u3m5"]
-flip_faces = true
-size = Vector2(2, 2)
 
 [sub_resource type="Animation" id="Animation_e70pf"]
 length = 0.001
@@ -349,17 +197,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 [node name="eyes" type="Node3D" parent="neck/head"]
 
 [node name="Camera3D" type="Camera3D" parent="neck/head/eyes"]
-environment = SubResource("Environment_k0juu")
-
-[node name="QuadPlane" type="MeshInstance3D" parent="neck/head/eyes/Camera3D"]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, -1.6)
-visible = false
-material_override = SubResource("ShaderMaterial_njjts")
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_1u3m5")
-skeleton = NodePath("../..")
+environment = ExtResource("2_g2els")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="neck/head/eyes"]
 libraries = {
 &"": SubResource("AnimationLibrary_w72kd")
 }
+
+[node name="StairsAheadRayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.8)
+target_position = Vector3(0, -0.55, 0)
+
+[node name="StairsBelowRayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -0.75, 0)
