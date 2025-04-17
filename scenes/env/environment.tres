@@ -1,7 +1,15 @@
-[gd_resource type="Environment" load_steps=2 format=3 uid="uid://brncpb5x53i6a"]
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://brncpb5x53i6a"]
+
+[ext_resource type="Texture2D" uid="uid://58br6g18adqk" path="res://assets/skybox/NightSkyHDRI001_2K-HDR.exr" id="1_kn6mk"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qv21q"]
+panorama = ExtResource("1_kn6mk")
 
 [sub_resource type="Sky" id="Sky_6q3me"]
+sky_material = SubResource("PanoramaSkyMaterial_qv21q")
 
 [resource]
 background_mode = 2
 sky = SubResource("Sky_6q3me")
+sdfgi_enabled = true
+glow_enabled = true

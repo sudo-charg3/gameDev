@@ -256,6 +256,7 @@ func end_wall_run():
 		eyes.rotation.z = lerp_angle(eyes.rotation.z, 0.0, 0.2)
 		if animation_player.has_animation("wall_run_end"):
 			animation_player.play("wall_run_end")
+		currentSpeed += 100
 
 # ---------------- STAIR MOVEMENT SYSTEM ----------------
 func _snap_down_to_stairs_check() -> void:
