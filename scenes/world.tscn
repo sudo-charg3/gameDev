@@ -1,15 +1,8 @@
-[gd_scene load_steps=55 format=3 uid="uid://dr4m32dx17fsk"]
+[gd_scene load_steps=19 format=3 uid="uid://dr4m32dx17fsk"]
 
-[ext_resource type="Texture2D" uid="uid://ccqrgy085573s" path="res://assets/illustration-beauty-wood-wall-floor-texture-pattern-background-vector.jpg" id="1_f7oij"]
+[ext_resource type="Texture2D" uid="uid://bcuvfm65ydil6" path="res://assets/textures/illustration-beauty-wood-wall-floor-texture-pattern-background-vector.jpg" id="1_f7oij"]
 [ext_resource type="Script" uid="uid://djc4qnfhq5ly2" path="res://scripts/player.gd" id="3_13ra8"]
 [ext_resource type="Environment" uid="uid://b41bqfliybeoj" path="res://shaders/world_environment.tres" id="8_avttq"]
-[ext_resource type="ArrayMesh" uid="uid://dnkiok5hkkjlr" path="res://assets/Table.obj" id="8_c68l7"]
-[ext_resource type="PackedScene" uid="uid://64mk3om8lf7d" path="res://casc.fbx" id="9_n10kb"]
-[ext_resource type="Texture2D" uid="uid://djf7u4pwlgetw" path="res://assets/table_textures/Cube.png" id="9_qk3rg"]
-[ext_resource type="ArrayMesh" uid="uid://5gev1w7l08gg" path="res://assets/uploads_files_2616447_Plant.obj" id="10_ohdde"]
-[ext_resource type="Texture2D" uid="uid://cqf3wu2hfynt" path="res://assets/table_textures/tablestand.png" id="10_pryuo"]
-[ext_resource type="Script" uid="uid://dmwvrkd3bse1t" path="res://enemy.gd" id="10_w7kh3"]
-[ext_resource type="Texture2D" uid="uid://bgrj7uciboglp" path="res://assets/table_textures/cabinet_outer_2.png" id="11_bm4s1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hi8bo"]
 cull_mode = 1
@@ -25,146 +18,6 @@ diffuse_mode = 3
 specular_mode = 1
 albedo_texture = ExtResource("1_f7oij")
 uv1_scale = Vector3(5, 2, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kbok1"]
-blend_mode = 4
-cull_mode = 1
-shading_mode = 0
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0, 0, 1)
-grow = true
-grow_amount = 0.02
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51ql5"]
-next_pass = SubResource("StandardMaterial3D_kbok1")
-albedo_texture = ExtResource("9_qk3rg")
-uv1_scale = Vector3(1.5, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_630nb"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_texture = ExtResource("10_pryuo")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_diond"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_texture = ExtResource("11_bm4s1")
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iuako"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4rcfw"]
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_6v7bi"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hten"]
-blend_mode = 4
-cull_mode = 1
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0, 0, 1)
-grow = true
-grow_amount = 0.005
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yq2ga"]
-next_pass = SubResource("StandardMaterial3D_3hten")
-shading_mode = 0
-diffuse_mode = 3
-specular_mode = 1
-albedo_texture = ExtResource("9_qk3rg")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d2kya"]
-blend_mode = 4
-cull_mode = 1
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0, 0, 1)
-grow = true
-grow_amount = 0.01
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wfu6i"]
-next_pass = SubResource("StandardMaterial3D_d2kya")
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0.739815, 0.253711, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwans"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0.739815, 0.253711, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4ups"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0.739815, 0.253711, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mty2o"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0.739815, 0.253711, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fwyey"]
-next_pass = SubResource("StandardMaterial3D_d2kya")
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0.739815, 0.253711, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_it2ty"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0.739815, 0.253711, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ppwit"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0.739815, 0.253711, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqbep"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0.739815, 0.253711, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kgagb"]
-next_pass = SubResource("StandardMaterial3D_d2kya")
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0.739815, 0.253711, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vi8cw"]
-next_pass = SubResource("StandardMaterial3D_d2kya")
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0.739815, 0.253711, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bw7rh"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0.739815, 0.253711, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_142jh"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0.739815, 0.253711, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1f6ll"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.231691, 0.0298568, 0.00996808, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdwfe"]
-cull_mode = 1
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0, 0, 1)
-grow = true
-grow_amount = 0.01
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7l8m"]
-next_pass = SubResource("StandardMaterial3D_pdwfe")
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.112176, 0.202767, 0.353503, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_okcj4"]
 
@@ -451,77 +304,7 @@ _data = {
 &"landing_2": SubResource("Animation_ohcxn")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q5onr"]
-cull_mode = 1
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jhx03"]
-next_pass = SubResource("StandardMaterial3D_q5onr")
-albedo_color = Color(1.07091e-06, 0.318421, 0.273381, 1)
-grow = true
-grow_amount = 0.005
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3hyu"]
-cull_mode = 1
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0, 0, 0, 1)
-grow = true
-grow_amount = 0.005
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7kh3"]
-next_pass = SubResource("StandardMaterial3D_e3hyu")
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.705882, 0.27451, 0.498039, 1)
-
 [node name="world" type="Node3D"]
-
-[node name="stage" type="Node3D" parent="."]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="stage"]
-use_collision = true
-size = Vector3(20, 0.1, 20)
-material = SubResource("StandardMaterial3D_14sek")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="stage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -18)
-use_collision = true
-size = Vector3(20, 0.1, 20)
-material = SubResource("StandardMaterial3D_14sek")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="stage"]
-transform = Transform3D(-0.7, 0, -1.05697e-07, 0, 0.7, 0, 1.05697e-07, 0, -0.7, 6.7043, 1.06, -0.100001)
-mesh = ExtResource("8_c68l7")
-surface_material_override/0 = SubResource("StandardMaterial3D_51ql5")
-surface_material_override/1 = SubResource("StandardMaterial3D_630nb")
-surface_material_override/2 = SubResource("StandardMaterial3D_diond")
-surface_material_override/3 = SubResource("StandardMaterial3D_iuako")
-surface_material_override/4 = SubResource("StandardMaterial3D_4rcfw")
-surface_material_override/5 = SubResource("ORMMaterial3D_6v7bi")
-surface_material_override/6 = SubResource("StandardMaterial3D_yq2ga")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="stage"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 6.925, 1.1, -1.075)
-mesh = ExtResource("10_ohdde")
-surface_material_override/0 = SubResource("StandardMaterial3D_wfu6i")
-surface_material_override/1 = SubResource("StandardMaterial3D_hwans")
-surface_material_override/2 = SubResource("StandardMaterial3D_wfu6i")
-surface_material_override/3 = SubResource("StandardMaterial3D_g4ups")
-surface_material_override/4 = SubResource("StandardMaterial3D_mty2o")
-surface_material_override/5 = SubResource("StandardMaterial3D_fwyey")
-surface_material_override/6 = SubResource("StandardMaterial3D_wfu6i")
-surface_material_override/7 = SubResource("StandardMaterial3D_it2ty")
-surface_material_override/8 = SubResource("StandardMaterial3D_ppwit")
-surface_material_override/9 = SubResource("StandardMaterial3D_wfu6i")
-surface_material_override/10 = SubResource("StandardMaterial3D_nqbep")
-surface_material_override/11 = SubResource("StandardMaterial3D_kgagb")
-surface_material_override/12 = SubResource("StandardMaterial3D_vi8cw")
-surface_material_override/13 = SubResource("StandardMaterial3D_bw7rh")
-surface_material_override/14 = SubResource("StandardMaterial3D_142jh")
-surface_material_override/15 = SubResource("StandardMaterial3D_wfu6i")
-surface_material_override/16 = SubResource("StandardMaterial3D_1f6ll")
-surface_material_override/17 = SubResource("StandardMaterial3D_o7l8m")
 
 [node name="env" type="Node3D" parent="."]
 
@@ -537,6 +320,19 @@ shadow_enabled = true
 [node name="OmniLight3D" type="OmniLight3D" parent="env"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 7, 3, -1)
 visible = false
+
+[node name="stage" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="stage"]
+use_collision = true
+size = Vector3(20, 0.1, 20)
+material = SubResource("StandardMaterial3D_14sek")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -18)
+use_collision = true
+size = Vector3(20, 0.1, 20)
+material = SubResource("StandardMaterial3D_14sek")
 
 [node name="player" type="CharacterBody3D" parent="."]
 transform = Transform3D(-0.8, 0, 1.20797e-07, 0, 0.8, 0, -1.20797e-07, 0, -0.8, 3, 0, 0)
@@ -555,6 +351,7 @@ disabled = true
 
 [node name="mesh" type="MeshInstance3D" parent="player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+cast_shadow = 0
 mesh = SubResource("CapsuleMesh_a27vt")
 surface_material_override/0 = SubResource("StandardMaterial3D_ju7lp")
 
@@ -583,74 +380,3 @@ skeleton = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_w72kd")
 }
-
-[node name="casc" parent="." instance=ExtResource("9_n10kb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-script = ExtResource("10_w7kh3")
-
-[node name="Skeleton3D" parent="casc" index="0"]
-bones/0/position = Vector3(-0.0824049, 0.818995, 0.0204214)
-bones/0/rotation = Quaternion(-0.0484382, 0.955508, 0.00872361, -0.290829)
-bones/1/rotation = Quaternion(0.13638, -0.288754, 0.913439, 0.252292)
-bones/2/rotation = Quaternion(0.364994, 0.00737966, 0.0109105, 0.930917)
-bones/3/rotation = Quaternion(-0.693554, -0.0532107, 0.267618, 0.666732)
-bones/4/rotation = Quaternion(-0.71114, -0.010577, 0.00409166, 0.702959)
-bones/5/rotation = Quaternion(-0.0157918, 0.0182243, 0.0466876, 0.998618)
-bones/6/rotation = Quaternion(-0.0736788, 0.00753413, 0.0437889, 0.996292)
-bones/7/rotation = Quaternion(-0.0797195, 0.160523, 0.0125572, 0.983727)
-bones/8/rotation = Quaternion(0.0746261, 0.244665, 0.0505106, 0.965411)
-bones/10/rotation = Quaternion(-0.603698, 0.792836, -0.0151094, -0.0820424)
-bones/11/rotation = Quaternion(-0.668311, 0.731687, -0.0551961, 0.122261)
-bones/12/rotation = Quaternion(0.261647, -0.1218, 0.0334374, 0.956864)
-bones/13/rotation = Quaternion(0.039235, 0.730884, 0.0118463, 0.68127)
-bones/14/rotation = Quaternion(0.284607, 0.902762, -0.00330986, -0.322503)
-bones/15/rotation = Quaternion(-0.296706, 0.579868, -0.0864948, 0.753815)
-bones/16/rotation = Quaternion(-0.00642315, 0.11004, 0.0886059, 0.989949)
-bones/17/rotation = Quaternion(0.022514, 0.0309484, 0.273253, 0.961181)
-bones/19/rotation = Quaternion(-0.0805101, -0.0431224, 0.48526, 0.869587)
-bones/20/rotation = Quaternion(-0.0286221, -0.0151753, 0.608927, 0.792564)
-bones/21/rotation = Quaternion(0.000195818, -0.011168, 0.471728, 0.881673)
-bones/22/rotation = Quaternion(0.00221336, -0.697066, -0.0274093, 0.71648)
-bones/23/rotation = Quaternion(0.00135055, -0.13072, 0.519581, 0.844361)
-bones/24/rotation = Quaternion(-0.0284208, -0.0165979, 0.485269, 0.873745)
-bones/25/rotation = Quaternion(-0.00326964, -0.0151213, 0.468381, 0.883391)
-bones/27/rotation = Quaternion(0.0543694, -0.180584, 0.440442, 0.877749)
-bones/28/rotation = Quaternion(-0.0294052, -0.0113536, 0.491483, 0.870317)
-bones/29/rotation = Quaternion(0.00412161, -0.0142924, 0.480593, 0.876818)
-bones/31/rotation = Quaternion(0.0276166, -0.040637, 0.27353, 0.960608)
-bones/32/rotation = Quaternion(0.0086327, 0.0237131, 0.693979, 0.719553)
-bones/33/rotation = Quaternion(0.0151927, -0.00587532, 0.400523, 0.916142)
-bones/36/rotation = Quaternion(-0.101302, -0.0147074, 0.749713, 0.653798)
-bones/37/rotation = Quaternion(-0.306238, 0.821986, -0.392179, -0.277044)
-bones/38/rotation = Quaternion(0.549985, -0.105085, 0.0702787, 0.825551)
-bones/39/rotation = Quaternion(-0.0540783, 0.732678, -0.0995913, -0.671074)
-bones/40/position = Vector3(0.0425886, 0.255132, -0.445557)
-bones/40/rotation = Quaternion(0.331368, 0.920543, 0.206869, 0.0013493)
-bones/42/rotation = Quaternion(-0.420582, 0.615125, -0.109041, 0.657907)
-bones/43/rotation = Quaternion(0.0264794, 0.105868, 0.2625, 0.958741)
-bones/44/rotation = Quaternion(0.0260421, 0.0280496, 0.38566, 0.921847)
-bones/46/rotation = Quaternion(-0.05446, -0.0134236, 0.671928, 0.738489)
-bones/47/rotation = Quaternion(-0.0238732, -0.0163864, 0.457413, 0.888783)
-bones/48/rotation = Quaternion(0.000981478, -0.0111412, 0.408185, 0.912831)
-bones/49/rotation = Quaternion(0.00221336, -0.697066, -0.0274093, 0.71648)
-bones/50/rotation = Quaternion(-0.0278037, -0.0747651, 0.681425, 0.727528)
-bones/51/rotation = Quaternion(-0.0257988, -0.0170067, 0.425912, 0.904237)
-bones/52/rotation = Quaternion(-0.000206977, -0.0154835, 0.28401, 0.958696)
-bones/54/rotation = Quaternion(0.0262966, -0.115413, 0.634225, 0.764033)
-bones/55/rotation = Quaternion(-0.0280734, -0.0113731, 0.433604, 0.900594)
-bones/56/rotation = Quaternion(0.00640911, -0.0134134, 0.330555, 0.94367)
-bones/58/rotation = Quaternion(-0.0195544, 0.0086676, 0.580763, 0.813792)
-bones/59/rotation = Quaternion(-0.00490215, 0.0314385, 0.466036, 0.884193)
-bones/60/rotation = Quaternion(0.0138681, -0.00854485, 0.560726, 0.827841)
-bones/63/rotation = Quaternion(-0.264359, 0.887102, 0.177186, 0.334319)
-bones/64/rotation = Quaternion(0.616533, 0.0139533, 0.00910344, 0.787153)
-bones/65/rotation = Quaternion(-0.912999, -0.135401, 0.0901858, 0.374121)
-bones/66/rotation = Quaternion(-0.709632, -0.0107007, 0.00400487, 0.70448)
-
-[node name="wpn__giant_sword_01_01__l" parent="casc/Skeleton3D" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_jhx03")
-
-[node name="Cascy_mesh" parent="casc/Skeleton3D" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_w7kh3")
-
-[editable path="casc"]

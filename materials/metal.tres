@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://dufe5mjo1443k" path="res://assets/textures/rusty_metal_grid_diff_4k.jpg" id="1_o6q1k"]
 [ext_resource type="Texture2D" uid="uid://cttlkukfxv5hb" path="res://assets/textures/rusty_metal_grid_disp_4k.png" id="2_dengn"]
-[ext_resource type="Texture2D" uid="uid://c6t7epngmxkou" path="res://assets/rusty_metal_grid_nor_gl_4k.png" id="3_8p2fm"]
-[ext_resource type="Texture2D" uid="uid://c3wgvlbtnhado" path="res://assets/rusty_metal_grid_rough_4k.png" id="4_s8uns"]
+[ext_resource type="Texture2D" uid="uid://c6t7epngmxkou" path="res://assets/textures/rusty_metal_grid_nor_gl_4k.png" id="3_8p2fm"]
+[ext_resource type="Texture2D" uid="uid://c3wgvlbtnhado" path="res://assets/textures/rusty_metal_grid_rough_4k.png" id="4_s8uns"]
 
 [resource]
 albedo_texture = ExtResource("1_o6q1k")
