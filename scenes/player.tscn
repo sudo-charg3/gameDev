@@ -204,11 +204,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_w72kd")
 }
 
-[node name="StairsAheadRayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.8)
-visible = false
-target_position = Vector3(0, -0.55, 0)
+[node name="player_ka_dil" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.875, 0)
 
-[node name="StairsBelowRayCast3D" type="RayCast3D" parent="."]
-visible = false
-target_position = Vector3(0, -0.75, 0)
+[node name="WallRaycastRight" type="RayCast3D" parent="player_ka_dil"]
+transform = Transform3D(-4.37114e-08, 1, 1.50996e-07, -1, -4.37114e-08, 1.50996e-07, 1.50996e-07, -1.50996e-07, 1, 0, 0, 0)
+target_position = Vector3(0, 1.5, 0)
+
+[node name="WallRaycastLeft" type="RayCast3D" parent="player_ka_dil"]
+transform = Transform3D(0.0191897, 0.997936, 0.0612894, 0.982231, -0.00737034, -0.187532, -0.186693, 0.063799, -0.980345, 0, 0, 0)
+target_position = Vector3(0, -1.5, 0)
+
+[node name="WallRaycastFront" type="RayCast3D" parent="player_ka_dil"]
+target_position = Vector3(0, 0, -1.5)
