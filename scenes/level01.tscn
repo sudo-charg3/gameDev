@@ -303,7 +303,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.00001, -0.106563, -0.000662327
 shape = SubResource("BoxShape3D_l8gd6")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="stage/gameviihaan/Cube_016/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.00001, -0.722091, 0.499338, -1.02345)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.00001, -0.622091, 0.499338, -1.02345)
 shape = SubResource("BoxShape3D_l8gd6")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="stage/gameviihaan/Cube_016/StaticBody3D"]

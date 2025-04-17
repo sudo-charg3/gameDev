@@ -58,7 +58,7 @@ var direction = Vector3.ZERO
 var cursorLock = true
 
 #Constants:
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 8
 var crouchDepth = -0.6
 
 func _ready():
