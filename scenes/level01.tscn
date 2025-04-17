@@ -298,7 +298,7 @@ cast_shadow = 0
 [node name="StaticBody3D" type="StaticBody3D" parent="stage/gameviihaan/Cube_016" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stage/gameviihaan/Cube_016/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.00001, -0.106563, -0.000662327, -1.07345)
+transform = Transform3D(0.185115, 0, 0, 0, 0.179465, 0, 0, 0, 0.131034, 5.93818, -0.929424, -1.22421)
 shape = SubResource("BoxShape3D_l8gd6")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="stage/gameviihaan/Cube_016/StaticBody3D"]
@@ -389,7 +389,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.1, 0, -7.25)
 shape = SubResource("BoxShape3D_gbk3v")
 
 [node name="player" parent="." instance=ExtResource("1_miv2v")]
-transform = Transform3D(-0.8, 0, 1.20797e-07, 0, 0.8, 0, -1.20797e-07, 0, -0.8, -26.8198, 8.28983, 0.539232)
+transform = Transform3D(-0.8, 0, 1.20797e-07, 0, 0.8, 0, -1.20797e-07, 0, -0.8, -94.3889, 9.55832, 4.24046)
 floor_max_angle = 1.22173
 fov_wallrun = 110.0
 
