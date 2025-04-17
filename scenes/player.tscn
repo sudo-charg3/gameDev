@@ -206,7 +206,9 @@ libraries = {
 
 [node name="StairsAheadRayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.8)
+visible = false
 target_position = Vector3(0, -0.55, 0)
 
 [node name="StairsBelowRayCast3D" type="RayCast3D" parent="."]
+visible = false
 target_position = Vector3(0, -0.75, 0)
