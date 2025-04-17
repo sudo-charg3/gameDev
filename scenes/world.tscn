@@ -1,8 +1,23 @@
-[gd_scene load_steps=22 format=3 uid="uid://dr4m32dx17fsk"]
+[gd_scene load_steps=25 format=3 uid="uid://dr4m32dx17fsk"]
 
 [ext_resource type="Texture2D" uid="uid://pfo4vlbhmg3k" path="res://assets/skybox/M3_Comic_equirectangular-jpg_night_sky_vast_minimal_1976843797_13133834.jpg" id="1_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://bcuvfm65ydil6" path="res://assets/textures/illustration-beauty-wood-wall-floor-texture-pattern-background-vector.jpg" id="1_f7oij"]
 [ext_resource type="Script" uid="uid://djc4qnfhq5ly2" path="res://scripts/player.gd" id="3_13ra8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4wyf3"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_k0juu"]
+sky_material = SubResource("ProceduralSkyMaterial_4wyf3")
+
+[sub_resource type="Environment" id="Environment_71j4m"]
+background_mode = 2
+sky = SubResource("Sky_k0juu")
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hi8bo"]
 cull_mode = 1
@@ -338,6 +353,9 @@ _data = {
 transform = Transform3D(-0.955793, -0.234212, 0.177776, 0, 0.604599, 0.79653, -0.29404, 0.761318, -0.577872, 0, 0, 0)
 shadow_enabled = true
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
+environment = SubResource("Environment_71j4m")
+
 [node name="stage" type="Node3D" parent="."]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="stage"]
@@ -355,6 +373,7 @@ material = SubResource("StandardMaterial3D_14sek")
 transform = Transform3D(-0.8, 0, 1.20797e-07, 0, 0.8, 0, -1.20797e-07, 0, -0.8, 3, 0, 0)
 script = ExtResource("3_13ra8")
 lerpSpeed = 15.0
+enableHeadBobbing = true
 mouseSens = 0.2
 
 [node name="StandingCollider" type="CollisionShape3D" parent="player"]
