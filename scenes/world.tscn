@@ -1,8 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://dr4m32dx17fsk"]
+[gd_scene load_steps=22 format=3 uid="uid://dr4m32dx17fsk"]
 
+[ext_resource type="Texture2D" uid="uid://pfo4vlbhmg3k" path="res://assets/skybox/M3_Comic_equirectangular-jpg_night_sky_vast_minimal_1976843797_13133834.jpg" id="1_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://bcuvfm65ydil6" path="res://assets/textures/illustration-beauty-wood-wall-floor-texture-pattern-background-vector.jpg" id="1_f7oij"]
 [ext_resource type="Script" uid="uid://djc4qnfhq5ly2" path="res://scripts/player.gd" id="3_13ra8"]
-[ext_resource type="Environment" uid="uid://b41bqfliybeoj" path="res://shaders/world_environment.tres" id="8_avttq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hi8bo"]
 cull_mode = 1
@@ -31,6 +31,32 @@ blend_mode = 4
 diffuse_mode = 3
 specular_mode = 1
 albedo_color = Color(1, 0.458824, 0.0666667, 1)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tppwv"]
+panorama = ExtResource("1_4wyf3")
+
+[sub_resource type="Sky" id="Sky_iitfp"]
+sky_material = SubResource("PanoramaSkyMaterial_tppwv")
+
+[sub_resource type="Environment" id="Environment_k0juu"]
+background_mode = 2
+sky = SubResource("Sky_iitfp")
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+glow_intensity = 0.2
+glow_strength = 0.7
+glow_bloom = 0.1
+glow_blend_mode = 1
+fog_light_energy = 0.39
+fog_density = 0.0095
+volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(1, 1, 0, 1)
+volumetric_fog_emission = Color(0.241156, 0.241156, 0.241156, 1)
+adjustment_brightness = 0.88
+adjustment_saturation = 0.9
 
 [sub_resource type="Shader" id="Shader_nygwi"]
 code = "shader_type spatial;
@@ -308,18 +334,9 @@ _data = {
 
 [node name="env" type="Node3D" parent="."]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
-environment = ExtResource("8_avttq")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
 transform = Transform3D(-0.955793, -0.234212, 0.177776, 0, 0.604599, 0.79653, -0.29404, 0.761318, -0.577872, 0, 0, 0)
-light_color = Color(1, 0.978512, 0.797875, 1)
-light_energy = 0.9
 shadow_enabled = true
-
-[node name="OmniLight3D" type="OmniLight3D" parent="env"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 7, 3, -1)
-visible = false
 
 [node name="stage" type="Node3D" parent="."]
 
@@ -366,7 +383,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 [node name="eyes" type="Node3D" parent="player/neck/head"]
 
 [node name="Camera3D" type="Camera3D" parent="player/neck/head/eyes"]
-environment = ExtResource("8_avttq")
+environment = SubResource("Environment_k0juu")
 
 [node name="QuadPlane" type="MeshInstance3D" parent="player/neck/head/eyes/Camera3D"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, -1.6)
