@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://be8mwleg0j5xr"]
+[gd_scene load_steps=5 format=3 uid="uid://gb54aai2c3hr"]
 
-[ext_resource type="Script" uid="uid://c7lb44wj1tcop" path="res://scenes/Bullet.gd" id="1_hf8mt"]
+[ext_resource type="Script" path="res://scenes/Bullet.gd" id="1_hf8mt"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_hf8mt"]
 
@@ -13,7 +13,7 @@ emission_energy_multiplier = 16.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_4utqk"]
 
 [node name="Bullet" type="RigidBody3D"]
-transform = Transform3D(0.0117017, 0.0634859, -0.0763715, 0, -0.0768998, -0.0639251, -0.099313, 0.00748035, -0.00899862, 0, 0, 0)
+transform = Transform3D(0.0117017, 0.0634859, -0.0763715, -6.7228e-09, -0.0768998, -0.0639251, -0.099313, 0.00748033, -0.00899858, 0, 0, 0)
 script = ExtResource("1_hf8mt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -22,5 +22,5 @@ mesh = SubResource("SphereMesh_hf8mt")
 surface_material_override/0 = SubResource("StandardMaterial3D_hf8mt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 0, 0, 0)
+transform = Transform3D(-7.45058e-09, 1.86265e-09, 0.2, -7.45058e-09, 0.2, -9.31323e-10, -0.2, -5.93718e-09, -5.58794e-09, 0, 0, 0)
 shape = SubResource("SphereShape3D_4utqk")
