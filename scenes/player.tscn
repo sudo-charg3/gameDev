@@ -220,6 +220,8 @@ target_position = Vector3(0, -1.5, 0)
 [node name="WallRaycastFront" type="RayCast3D" parent="player_ka_dil"]
 target_position = Vector3(0, 0, -1.5)
 
-[node name="sb" parent="." instance=ExtResource("3_qhqgy")]
-transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 0.6, 1.44, -1.1)
-visible = false
+[node name="weapon holder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.3, -0.6)
+
+[node name="sb" parent="weapon holder" instance=ExtResource("3_qhqgy")]
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 0.0599999, 0.18, -0.44)
