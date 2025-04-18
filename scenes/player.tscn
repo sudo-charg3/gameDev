@@ -166,6 +166,7 @@ _data = {
 
 [node name="player" type="CharacterBody3D"]
 transform = Transform3D(-0.8, 0, 1.20797e-07, 0, 0.8, 0, -1.20797e-07, 0, -0.8, 0, 0, 0)
+floor_max_angle = 1.309
 script = ExtResource("1_3vyb7")
 lerpSpeed = 15.0
 enableHeadBobbing = true
