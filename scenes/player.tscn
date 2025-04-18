@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://c33qu8e4ujoos"]
+[gd_scene load_steps=14 format=3 uid="uid://c33qu8e4ujoos"]
 
 [ext_resource type="Script" uid="uid://djc4qnfhq5ly2" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Environment" uid="uid://brncpb5x53i6a" path="res://scenes/env/environment.tres" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://cgh80j8wjwiug" path="res://models/sb.fbx" id="3_qhqgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_okcj4"]
 
@@ -218,3 +219,7 @@ target_position = Vector3(0, -1.5, 0)
 
 [node name="WallRaycastFront" type="RayCast3D" parent="player_ka_dil"]
 target_position = Vector3(0, 0, -1.5)
+
+[node name="sb" parent="." instance=ExtResource("3_qhqgy")]
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 0.6, 1.44, -1.1)
+visible = false
