@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://bigxmo45kc2hq"]
+
+[ext_resource type="Script" uid="uid://dj0v25bpnocra" path="res://scripts/world.gd" id="1_wu84c"]
+[ext_resource type="PackedScene" uid="uid://d7413su0ypom" path="res://scenes/mainMenuUI.tscn" id="2_8ln24"]
+[ext_resource type="Script" uid="uid://dhvrt35jmieew" path="res://scripts/timer.gd" id="3_rtw2f"]
+[ext_resource type="PackedScene" uid="uid://c4hoplq4s5x2t" path="res://gameviihaan.blend" id="4_oa1go"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_de8j7"]
+
+[sub_resource type="Sky" id="Sky_koolx"]
+sky_material = SubResource("ProceduralSkyMaterial_de8j7")
+
+[sub_resource type="Environment" id="Environment_erduv"]
+background_mode = 2
+sky = SubResource("Sky_koolx")
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_wu84c")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_erduv")
+
+[node name="VBoxContainer" parent="." instance=ExtResource("2_8ln24")]
+
+[node name="cam_pivot" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="cam_pivot"]
+transform = Transform3D(-4.01078e-08, -0.397596, 0.91756, -1.73795e-08, 0.91756, 0.397596, -1, 0, -4.37114e-08, 53.7555, 17.8088, 0.455154)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 134.0
+offset_bottom = 51.0
+text = "00:00:00"
+script = ExtResource("3_rtw2f")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="gameviihaan" parent="Node3D" instance=ExtResource("4_oa1go")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80559, 0, 0)
