@@ -1,9 +1,10 @@
-[gd_scene load_steps=63 format=3 uid="uid://4unj3vsk8btb"]
+[gd_scene load_steps=64 format=3 uid="uid://4unj3vsk8btb"]
 
 [ext_resource type="PackedScene" uid="uid://c4hoplq4s5x2t" path="res://gameviihaan.blend" id="1_8es24"]
 [ext_resource type="Environment" uid="uid://brncpb5x53i6a" path="res://scenes/env/environment.tres" id="1_gbk3v"]
 [ext_resource type="PackedScene" uid="uid://c33qu8e4ujoos" path="res://scenes/player.tscn" id="1_miv2v"]
 [ext_resource type="PackedScene" uid="uid://dpaj5nljdgxvx" path="res://scifi_drone.glb" id="3_41r67"]
+[ext_resource type="Script" uid="uid://bs5xnvlskqmpq" path="res://scenes/area_3d.gd" id="3_rnd6f"]
 [ext_resource type="Script" path="res://scifi_drone.gd" id="4_rnd6f"]
 [ext_resource type="PackedScene" uid="uid://gb54aai2c3hr" path="res://scenes/Bullet.tscn" id="5_xl5rn"]
 
@@ -565,9 +566,12 @@ shape = SubResource("ConcavePolygonShape3D_8nna0")
 [node name="Cube" parent="stage/gameviihaan" index="66"]
 mesh = null
 
-[node name="StaticBody3D" type="StaticBody3D" parent="stage/gameviihaan/Cube" index="0"]
+[node name="Area3D" type="Area3D" parent="stage/gameviihaan/Cube" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("3_rnd6f")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="stage/gameviihaan/Cube/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stage/gameviihaan/Cube/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_y1l05")
 
 [node name="player" parent="." instance=ExtResource("1_miv2v")]
