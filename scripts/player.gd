@@ -15,6 +15,12 @@ extends CharacterBody3D
 @onready var wall_ray_right = $player_ka_dil/WallRaycastRight
 @onready var wall_ray_front = $player_ka_dil/WallRaycastFront
 
+# --- Sliding Variables ---
+var slideTimer = 0.0
+var slideTimerMax = 1.0
+var slideVector = Vector2.ZERO
+var slideSpeed = 10.0
+
 # --- Movement Variables ---
 var currentSpeed = 5.0
 @export var walkSpeed = 5.0
@@ -110,9 +116,17 @@ func _physics_process(delta: float) -> void:
 		head.position.y = lerp(head.position.y, crouchDepth, delta * lerpSpeed)
 		standing_collider.disabled = true
 		crouching_collider.disabled = false
+		
+		if currentSpeed > walkSpeed && input_dir != Vector2.ZERO:
+			sliding = true
+			slideTimer = slideTimerMax
+			slideVector = input_dir
+			freelooking = true
+		
 		walking = false
 		sprinting = false
 		crouching = true
+		
 	elif !ray_cast_3d.is_colliding():
 		standing_collider.disabled = false
 		crouching_collider.disabled = true
@@ -129,14 +143,24 @@ func _physics_process(delta: float) -> void:
 			crouching = false
 
 	# --- Freelook ---
-	if Input.is_action_pressed("freelook"):
+	if Input.is_action_pressed("freelook") || sliding:
 		freelooking = true
-		eyes.rotation.z = deg_to_rad(neck.rotation.y * freeLookTiltAmount)
+		
+		if sliding:
+			eyes.rotation.z = lerp(eyes.rotation.z, -deg_to_rad(7.0), delta*lerpSpeed)
+		else:
+			eyes.rotation.z = deg_to_rad(neck.rotation.y * freeLookTiltAmount)
 	else:
 		freelooking = false
 		neck.rotation.y = lerp(neck.rotation.y, 0.0, delta * freeLookLerpSpeed)
 		eyes.rotation.z = lerp(eyes.rotation.z, 0.0, freeLookLerpSpeed * delta)
-
+	# --- Sliding ---
+	if sliding:
+		slideTimer -= delta
+		if slideTimer <= 0:
+			sliding = false
+			freelooking = false
+	
 	# --- Headbob ---
 	if enableHeadBobbing:
 		if sprinting:
@@ -165,7 +189,9 @@ func _physics_process(delta: float) -> void:
 	var jumpAnimations = ["jump_1", "jump_2"]
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		sliding = false
 		animation_player.play(jumpAnimations[randi_range(0, 1)])
+		
 
 	# --- Land Animation ---
 	var landingAnimations = ["landing_1", "landing_2"]
@@ -179,10 +205,14 @@ func _physics_process(delta: float) -> void:
 	else:
 		if input_dir != Vector2.ZERO:
 			direction = lerp(direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta * airLerpSpeed)
-
+	if sliding:
+		direction = (transform.basis * Vector3(slideVector.x, 0, slideVector.y)).normalized()
 	if direction:
 		velocity.x = direction.x * currentSpeed
 		velocity.z = direction.z * currentSpeed
+		if sliding:
+			velocity.x = direction.x * (slideTimer+0.1) * slideSpeed
+			velocity.z = direction.z * (slideTimer+0.1) * slideSpeed
 	else:
 		velocity.x = move_toward(velocity.x, 0, currentSpeed)
 		velocity.z = move_toward(velocity.z, 0, currentSpeed)
