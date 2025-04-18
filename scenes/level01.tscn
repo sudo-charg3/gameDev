@@ -481,9 +481,6 @@ shape = SubResource("BoxShape3D_uqa8t")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.449999, 0.0500002, -7.65)
 shape = SubResource("BoxShape3D_41r67")
 
-[node name="Cylinder" parent="stage/gameviihaan" index="36"]
-transform = Transform3D(0.86126, 0, 0, 0, 0.79021, 0, 0, 0, 0.86126, 7.41378, 1.07062, 0.230445)
-
 [node name="StaticBody3D" type="StaticBody3D" parent="stage/gameviihaan/Cube_039" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stage/gameviihaan/Cube_039/StaticBody3D"]
